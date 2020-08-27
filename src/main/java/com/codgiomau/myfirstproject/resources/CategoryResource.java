@@ -37,7 +37,7 @@ public class CategoryResource {
 	public ResponseEntity<Category> findById(@PathVariable Long id) { //retorna apenas uma categoria. 
 		//a  notation @PathVariable recebe o numero do id na url
 		//Category cat =  new Category(1L, "Eletronics");
-		Category cat = categoryRespository.findById(id);
+		Category cat = categoryRespository.findById(id).get();
 		return ResponseEntity.ok().body(cat); 
 	}
 }

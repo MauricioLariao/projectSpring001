@@ -37,7 +37,7 @@ public class ProductResource {
 	public ResponseEntity<Product> findById(@PathVariable Long id) { //retorna apenas uma categoria. 
 		//a  notation @PathVariable recebe o numero do id na url
 		//product cat =  new product(1L, "Eletronics");
-		Product cat = productRespository.findById(id);
+		Product cat = productRespository.findById(id).get(); //.get para pegar o objeto, pois retorna opcional
 		return ResponseEntity.ok().body(cat); 
 	}
 }

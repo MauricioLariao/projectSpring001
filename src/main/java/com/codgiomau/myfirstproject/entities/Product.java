@@ -2,13 +2,25 @@ package com.codgiomau.myfirstproject.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity //para mapear a entidade como uma tabela para o JPA
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Double price;
 	
+	@ManyToOne //utilizado para criar a tabea com chave estrangeira, uma categoria tem varios produtos
+	@JoinColumn(name="categoy_id") //chave estrangeira
 	private Category category;
 	
 	public Product () {
